@@ -1,9 +1,11 @@
 from Node import Node
 from Busca_Gulosa import Busca_gulosa
 
-AC = Node('AC', 8.77, 70.55, None)
+RS = Node('RS', 30.17, 53.50, None)
 
-OBJETIVO = AC
+OBJETIVO = RS
+
+AC = Node('AC', 8.77, 70.55, OBJETIVO)
 
 AL = Node('AL', 9.62, 36.82, OBJETIVO)
 AM = Node('AM', 3.47, 65.10, OBJETIVO)
@@ -25,7 +27,6 @@ PI = Node('PI', 6.60, 42.28, OBJETIVO)
 RJ = Node('RJ', 22.25, 42.66, OBJETIVO)
 RN = Node('RN', 5.81, 36.59, OBJETIVO)
 RO = Node('RO', 10.83, 63.34, OBJETIVO)
-RS = Node('RS', 30.17, 53.50, OBJETIVO)
 RR = Node('RR', 1.99, 61.33, OBJETIVO)
 SC = Node('SC', 27.45, 50.95, OBJETIVO)
 SE = Node('SE', 10.57, 37.45, OBJETIVO)
@@ -64,5 +65,12 @@ PR.adjacentes = [SP, MS, SC]
 SC.adjacentes = [PR, RS]
 RS.adjacentes = [SC]
 
+allNodes = [RR, AP, AM, PA, AC, RO, TO, MA, PI, CE, RN, PB, PE, AL, SE, BA, MT, GO, MS, MG, ES, RJ, SP, PR, SC, RS]
+
 gulosa = Busca_gulosa(OBJETIVO)
 gulosa.buscar(TO)
+path = gulosa.getPath()
+
+from drawGaph import drawGraph
+
+drawGraph(allNodes, path)
