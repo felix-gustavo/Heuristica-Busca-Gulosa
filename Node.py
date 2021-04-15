@@ -1,16 +1,14 @@
 from geopy import distance
 
 class Node(object):
-    def __init__(self, nome, x, y, dest):
+    def __init__(self, nome, x, y, obj):
         self.nome = nome
         self.adjacentes  = []
-        self.visitado  = False
+
         self.x = x
         self.y = y
 
-        self.distanciaObjetivo = self.calculaDistancia(dest)
+        self.distObj = 0 if obj is None else distance.distance((self.x, self.y), (obj.x, obj.y)).km
 
-    def calculaDistancia(self, dest):
-        if dest is None: return 0
-
-        return distance.distance((self.x, self.y), (dest.x, dest.y)).km
+    def __lt__(self, other):
+        return self.distObj < other.distObj
