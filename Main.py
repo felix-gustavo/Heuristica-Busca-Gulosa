@@ -72,5 +72,5 @@ gulosa.buscar(TO)
 path = gulosa.getPath()
 
 from drawGaph import drawGraph
-
+  
 drawGraph(allNodes, path)
